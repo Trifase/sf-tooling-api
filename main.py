@@ -12,21 +12,18 @@ s.login()
 
 tooling = SfdcToolingApi(s)
 
-
-def create_label_payload(dict):
-    data = {
-        'Name' : dict['api_name'],
-        'MasterLabel' : dict['api_name'],
-        'Value' : dict['value'],
-        'IsProtected' : 'true',
-        'Category' : dict['cat'],
-        'Language' : 'en_US'
-    }
-    data = json.dumps(data)
-    return data
-
-
 def create_custom_label(api_name, category, value, language='en_US'):
+    """This create a payload ready to be posted to the api. It creates a custom label.
+
+    Args:
+        api_name (str): This is the name of the label. It will be also be used as the developer name of the label. No spaces I guess?
+        category (str): category of the label
+        value (str): This is the actual text of the label
+        language (str, optional): Language. Defaults to 'en_US'.
+
+    Returns:
+        _type_: _description_
+    """
     data = {
         'Name' : api_name,
         'MasterLabel' : api_name,
